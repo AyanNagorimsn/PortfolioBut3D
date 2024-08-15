@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+main > div > div {
+  touch-action: none;
+}
+
+.htmlScreen iframe {
+  width: 1024px;
+  height: 670px;
+  border: none;
+  border-radius: 20px;
+  background: black;
+  transform: scale(0.985);
+}
