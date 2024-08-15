@@ -7,7 +7,7 @@ function App() {
   return (
     <main>
       <div className="h-screen w-full">
-        <Canvas camera={{ position: [-1.5, 1, 3], fov: 80 }}>
+        <Canvas camera={{ position: [-1.3, 1, 3], fov: 80 }}>
           <Suspense>
             <MainScene />
           </Suspense>

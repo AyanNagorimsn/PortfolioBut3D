@@ -12,5 +12,8 @@ main > div > div {
   border: none;
   border-radius: 20px;
   background: black;
-  transform: scale(0.985);
+  transform: scale(0.985, 0);
+  transform-origin: top;
+
+  transition: 0.7s 1s ease-out;
 }

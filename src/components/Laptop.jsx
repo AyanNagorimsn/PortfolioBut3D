@@ -1,13 +1,16 @@
-import { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
+import { useSpring, a } from "@react-spring/three";
 
-export default function Laptop(props) {
-  const group = useRef();
+export default function Laptop({ isLaptopOpen, positionY }) {
+  const springs = useSpring({
+    rotation: isLaptopOpen ? [1.31, 0, 0] : [Math.PI, 0, 0],
+  });
+
   const { nodes, materials } = useGLTF(
     "https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/macbook/model.gltf"
   );
   return (
-    <group ref={group} {...props} dispose={null}>
+    <group position-y={positionY} dispose={null}>
       <group position={[0, 0.52, 0]} scale={[0.1, 0.1, 0.1]}>
         <mesh geometry={nodes.Circle001.geometry} material={nodes.Circle001.material} />
         <mesh geometry={nodes.Circle001_1.geometry} material={nodes.Circle001_1.material} />
@@ -47,7 +50,13 @@ export default function Laptop(props) {
           <mesh geometry={nodes.Circle_1.geometry} material={materials.Key} />
           <mesh geometry={nodes.Circle_2.geometry} material={materials.Touchbar} />
         </group>
-        <group position={[0.01, -0.47, -10.41]} rotation={[1.31, 0, 0]} scale={5.8}>
+
+        <a.group
+          config={{ mass: 10, tension: 100 }}
+          position={[0.01, -0.47, -10.41]}
+          rotation={springs.rotation}
+          scale={5.8}
+        >
           <mesh geometry={nodes.Circle002.geometry} material={nodes.Circle002.material} />
           <mesh geometry={nodes.Circle002_1.geometry} material={materials.Screen} />
           <mesh geometry={nodes.Circle002_2.geometry} material={materials.ScreenGlass} />
@@ -57,10 +66,10 @@ export default function Laptop(props) {
             geometry={nodes.AppleLogo000.geometry}
             material={materials["AppleLogo.004"]}
             position={[0, -0.11, -1.8]}
-            rotation={[-Math.PI, 0, -Math.PI]}
+            rotation={[-Math.PI, 0, 0]}
             scale={[0.58, 0.58, 0.58]}
           />
-        </group>
+        </a.group>
         <group position={[-15.03, 0.03, 0.6]} scale={5.8}>
           <mesh geometry={nodes.Circle009.geometry} material={nodes.Circle009.material} />
           <mesh geometry={nodes.Circle009_1.geometry} material={nodes.Circle009_1.material} />
