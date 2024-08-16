@@ -14,14 +14,6 @@ const CloudBackground = () => {
           color="hotpink"
         />
         <Cloud
-          scale={0.2}
-          position={[2, 0, -5]}
-          segments={60}
-          bounds={[10, 10, 2]}
-          volume={10}
-          color="orangered"
-        />
-        <Cloud
           scale={0.24}
           position={[-2, 0, -5]}
           segments={60}

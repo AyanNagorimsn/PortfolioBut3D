@@ -8,7 +8,7 @@ import {
   Sparkles,
 } from "@react-three/drei";
 
-import * as THREE from "three";
+import { Color } from "three";
 import { useThree } from "@react-three/fiber";
 
 import { useEffect, useRef, useState } from "react";
@@ -17,13 +17,14 @@ import Laptop from "./Laptop";
 import CloudBackground from "./CloudBackground";
 import { useSpring, a } from "@react-spring/three";
 
-const textColor = new THREE.Color(30, 30, 30);
+const textColor = new Color(30, 30, 30);
 
 const MainScene = () => {
   const { size } = useThree();
   const sceneRef = useRef(null);
 
   const [isLaptopOpen, setIsLaptopOpen] = useState(false);
+  const [sparklesCount, setSparklesCount] = useState(60);
 
   useEffect(() => {
     const { width } = size;
@@ -33,10 +34,12 @@ const MainScene = () => {
     }
     if (width < 600) {
       sceneRef.current.scale.set(0.7, 0.7, 0.7);
+      setSparklesCount(30);
     }
     if (width < 450) {
       sceneRef.current.scale.set(0.6, 0.6, 0.6);
       sceneRef.current.position.set(-0.3, 0, 0);
+      setSparklesCount(10);
     }
 
     setTimeout(() => {
@@ -53,7 +56,7 @@ const MainScene = () => {
     <>
       <color args={["#313bac"]} attach="background" />
       <Environment preset="city" />
-      <Sparkles size={5} scale={[6, 6, 2]} count={60} />
+      <Sparkles size={5} scale={[6, 6, 2]} count={sparklesCount} />
 
       <CloudBackground />
 
@@ -71,7 +74,7 @@ const MainScene = () => {
               fontSize={0.9}
               maxWidth={1}
               textAlign="center"
-              rotation={[0, -1.180000000000002, 0.20900000000000013]}
+              rotation={[0, -1.18, 0.2]}
               position={[2.2, 0.8, 0.1]}
               color={textColor}
               font="./banger.woff"
