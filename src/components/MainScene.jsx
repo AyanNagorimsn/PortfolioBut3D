@@ -25,6 +25,7 @@ const MainScene = () => {
 
   const [isLaptopOpen, setIsLaptopOpen] = useState(false);
   const [sparklesCount, setSparklesCount] = useState(60);
+  const [sparklesScale, setSparklesScale] = useState([6, 6, 2]);
 
   useEffect(() => {
     const { width } = size;
@@ -36,9 +37,16 @@ const MainScene = () => {
       sceneRef.current.scale.set(0.7, 0.7, 0.7);
       setSparklesCount(30);
     }
-    if (width < 450) {
-      sceneRef.current.scale.set(0.6, 0.6, 0.6);
-      sceneRef.current.position.set(-0.3, 0, 0);
+    if (width < 500) {
+      sceneRef.current.scale.set(0.5, 0.5, 0.5);
+      sceneRef.current.position.set(-0.22, 0, 0);
+      setSparklesScale([2.2, 1.2, 1]);
+      setSparklesCount(12);
+    }
+    if (width < 420) {
+      sceneRef.current.scale.set(0.5, 0.5, 0.5);
+      sceneRef.current.position.set(-0.22, 0, 0);
+      setSparklesScale([2.2, 2, 1]);
       setSparklesCount(10);
     }
 
@@ -56,7 +64,7 @@ const MainScene = () => {
     <>
       <color args={["#313bac"]} attach="background" />
       <Environment preset="city" />
-      <Sparkles size={5} scale={[6, 6, 2]} count={sparklesCount} />
+      <Sparkles size={5} scale={sparklesScale} count={sparklesCount} />
 
       <CloudBackground />
 

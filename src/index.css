@@ -6,6 +6,17 @@ main > div > div {
   touch-action: none;
 }
 
+@font-face {
+  font-family: "Bangers";
+  src: url("/banger.woff") format("woff");
+  font-weight: light;
+  font-style: normal;
+}
+
+html {
+  font-family: "Bangers", sans-serif;
+}
+
 .htmlScreen iframe {
   width: 1024px;
   height: 670px;
