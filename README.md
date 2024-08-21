@@ -1,6 +1,7 @@
 # My Portfolio In 3D ⚙️
 
 #### *Created using Threejs and React Three for learning and fun 😊!!*
+#### *Visit this [3D portfolio](https://ayannagoribut3d.vercel.app)  😊!!*
 #### *In the laptop you can navigate my [Original Portfolio](https://ayannagori.vercel.app)*
 ---
 ## Showcase 👀😍
